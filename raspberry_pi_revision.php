@@ -716,6 +716,16 @@ if(!$_GET["machine"]){
             break;
     }
 
+    switch($info["peripheralBase"])
+    {
+        case "RPI_PERIPHERAL_BASE_UNKNOWN":
+            $peripheralBase = "Unknown";
+            break;
+        default;
+            $peripheralBase = $info["peripheralBase"];
+            break;
+    }
+
     switch(intval($info["result"]))
     {
         case 0:
@@ -739,6 +749,7 @@ if(!$_GET["machine"]){
     $info["model"]          = $model;
     $info["manufacturer"]   = $manufacturer;
     $info["warrantyVoid"]   = (int)$warrantyBit? "yes" : "no";
+    $info["peripheralBase"] = $peripheralBase;
 }
 
 echo json_encode($info);
