@@ -411,17 +411,16 @@ if(!is_null($revision))
 
     // Remove warranty bit
     if(strlen($revision) == 7){
-        $revision[-7]=((base_convert($revision[-7],16,2)) & ~0x3);
+        $revision[-7]=(decbin(base_convert($revision[-7],16,2)) & ~0x3);
     }
 
-    //if((base_convert($revision[-6],16,2) & 0x8) == 0x8) // This bugs out for values > 0xC
     if(base_convert($revision[-6],16,2)[-4])
     {
         // Raspberry Pi2 style revision encoding
 
         $result = 2;
 
-        $warrantyBit = (base_convert($info["revisionNumber"][-7],16,2) & 0x2) == 0x2;
+        $warrantyBit = (decbin(base_convert($info["revisionNumber"][-7],16,2)) & 0x2) == 0x2;
 
         $memoryBits = base_convert($revision[-6],16,2);
         $memoryBits[-4] = $memoryBits[-4] & 0;
@@ -486,7 +485,7 @@ if(!is_null($revision))
         $result = 1;
         $revision = base_convert($revision,16,10);
         
-        $warrantyBit = (base_convert($info["revisionNumber"][-7],16,2) & 0x1) == 0x1;
+        $warrantyBit = (decbin(base_convert($info["revisionNumber"][-7],16,2)) & 0x1) == 0x1;
         
         // Original revision encoding
         
