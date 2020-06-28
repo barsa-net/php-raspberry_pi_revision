@@ -372,11 +372,14 @@ $processorToPeripheralBase = array(
 
 function getRaspberryPiRevision()
 {
-    $cpuinfo = file_get_contents("/proc/cpuinfo");
+    if(!@($cpuinfo = file_get_contents("/proc/cpuinfo")))
+    {
+        return NULL;
+    }
 
     preg_match("/Revision\s+:(.*)/",$cpuinfo,$revision);
 
-    return trim($revision[1]);
+    return is_null($revision[1]) ? NULL : trim($revision[1]);
 }
 
 if($_GET["revision"])
