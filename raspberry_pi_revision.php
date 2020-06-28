@@ -382,16 +382,20 @@ function getRaspberryPiRevision()
     return is_null($revision[1]) ? NULL : trim($revision[1]);
 }
 
+$result = 0;
+
 if($_GET["revision"])
 {
     $revision = $_GET["revision"];
+    if(!ctype_xdigit($revision))
+    {
+        $result = 3;
+    }
 }
 else
 {
     $revision = getRaspberryPiRevision();
 }
-
-$result = 0;
 
 $info = array(
         "result"            =>  $result,
@@ -406,7 +410,7 @@ $info = array(
         "peripheralBase"    =>  "RPI_PERIPHERAL_BASE_UNKNOWN",
     );
 
-if(!is_null($revision))
+if(!$result && !is_null($revision))
 {
 
     // Remove warranty bit
@@ -722,6 +726,9 @@ if(!$_GET["machine"]){
             break;
         case 2:
             $result = "found Pi 2 style revision number";
+            break;
+        case 3:
+            $result = "provided revision is not a valid hex encoded number";
             break;
     }
 
