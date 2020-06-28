@@ -537,6 +537,10 @@ if(!$_GET["machine"]){
 
             $memory = "8192 MB";
             break;
+
+        default:
+            $memory = "Unknown";
+            break;
     }
 
     switch($info["processor"])
@@ -560,6 +564,10 @@ if(!$_GET["machine"]){
 
             $processor = "Broadcom BCM2711";
             break;
+
+        default:
+            $processor = "Unknown";
+            break;
     }
 
     switch($info["i2cDevice"])
@@ -572,6 +580,10 @@ if(!$_GET["machine"]){
         case "RPI_I2C_1":
 
             $i2cDevice = "/dev/i2c-1";
+            break;
+
+        default:
+            $i2cDevice = "Unknown";
             break;
     }
 
@@ -651,6 +663,10 @@ if(!$_GET["machine"]){
 
             $model = "Raspberry Pi 4 Model B";
             break;
+
+        default:
+            $model = "Unknown";
+            break;
     }
 
     switch($info["manufacturer"])
@@ -683,6 +699,10 @@ if(!$_GET["machine"]){
         case "RPI_MANUFACTURER_STADIUM":
 
             $manufacturer = "Stadium";
+            break;
+
+        default:
+            $manufacturer = "Unknown";
             break;
     }
 
