@@ -458,7 +458,7 @@ if(!is_null($revision))
         }
         else
         {
-            $manufacturer = RPI_MANUFACTURER_UNKNOWN;
+            $manufacturer = "RPI_MANUFACTURER_UNKNOWN";
         }
 
         $pcbRevision = base_convert($revision[-1],16,10);
