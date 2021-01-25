@@ -1,4 +1,4 @@
-# raspberry_pi_revision
+# php-raspberry_pi_revision
 PHP code to decode the Revision: field of /proc/cpuinfo on the Raspberry Pi - Ported from [AndrewFromMelbourne/raspberry_pi_revision](https://github.com/AndrewFromMelbourne/raspberry_pi_revision)
 
 This script get the revision number from /proc/cpuinfo (by default) or you can manually pass revision number via $_GET["revision"], the output is in JSON in human-readable format (by default) or you can get a slightly more machine-parseable format via $_GET["machine"]
